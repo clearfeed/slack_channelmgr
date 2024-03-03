@@ -1,7 +1,22 @@
+"""
+Manage Users across multiple Slack Channels
+
+Author:
+    @jsensarma : https://github.com/jsensarma
+
+"""
+
 import streamlit as st
 import logging
 import sys
 from pathlib import Path
+import base64
+
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
 
 # Add the root directory to sys.path
 root_dir = Path(__file__).resolve().parent.parent
@@ -11,9 +26,36 @@ from lib_slack import channels
 from lib_slack import users
 
 def main():
-    st.title('ClearFeed Bulk Channel Manager')
-    st.write('Welcome! Let\'s help you make changes to lots of Slack channels at once!')
 
+    st.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://clearfeed.ai/)'''.format(img_to_bytes("ClearFeedSquareLogo.png")), unsafe_allow_html=True)
+    st.header('ClearFeed Bulk Channel Manager')
+    st.markdown("""
+                This is a free app to manage users across multiple Slack channels. 
+                It's relevant for people who manage lots of Slack channels (for example in customer facing situations).
+                It's developed by [*ClearFeed*](https://clearfeed.ai) - we help manage Customer Slack Channels and convert Slack Channels into a HelpDesk. We also help with Slack Connect and Slack Workflow Builder.
+
+                **Usage Notes**:
+                
+                1. **Obtaining Slack auth token** - please see [Guide for Slack Auth Token](https://github.com/clearfeed/slack_channelmgr/blob/main/docs/guide_for_slack_auth_token.md)
+                2. **Passing the Bot/User Name**: Ideally pass in the handle of the user. If not - pass in their user name visible on Slack. The App will try to find a matching user.
+                3. **Specifying the Channels using Filters**: The set of channels to be selected for performing the action can be specified using the parameters below:
+                    * Select `slack_connect_only`, `private_only`, `public_only` to first narrow down the set of channels to look for.
+                    * Then, optionally, provide a comma separated list of `include` strings. If a channel matches _any_ of the strings in the include list - it will be picked.
+                    * Then, optionally, provide a comma separated list of `exclude` strings. If a channel matches _any_ of the strings in the exclude list - it will be discarded.
+
+                    As an example - to just pick one channel - supply it's name in the `include` parameter.
+                4. **Specify an action**: Pick either `Add` or `Remove` (to add or remove the specified user/bot to the selected channels)
+                5. First hit `Generate Plan` to see which user will be picked and to which channel(s) they will be added or deleted.
+                6. Then hit `Yes` to proceed with the plan, or `No` to cancel and go back and enter new parameters and generate a new plan.
+
+
+                **Getting Help**:
+                You can ask questions at `#bulk-channel` on our Community Slack Workspace. Join using the [invite link here](https://join.slack.com/t/clearfeedcommunity/shared_invite/zt-16yp3d38w-tlZK7T8qynBZrDLNzKBtDw)
+
+                ---
+                """) 
+
+    st.write('')
     logging.basicConfig(level=logging.INFO)
     # Input parameters from the user
     slack_api_token = st.text_input("Slack API Token", placeholder="xoxb-xxxxxxxxxx")
@@ -129,7 +171,7 @@ def main():
         user_details_str = '  \n\t'.join(user_details)
 
         status_placeholder.empty()
-        status_placeholder.markdown(f"**User Inputs:**  \n  \n"
+        status_placeholder.markdown(f"**Plan:**  \n  \n"
                                     f"**Action:** {action}  \n  \n"
                                     f"**User Details:**  \n\t{user_details_str}  \n  \n"
                                     f"**Channels:**  \n\t{channel_details_str} \n  \n**Hit Yes or No!** \n")

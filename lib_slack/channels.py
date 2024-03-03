@@ -91,6 +91,7 @@ def invite_user_to_channels(headers, clist, user):
       if response.get('error') == 'already_in_channel':
         already_present_list.append(c)
       else:
+        logging.error(f"Error trying to invite user on channel {c['name']}: {response.get('error')}")
         error_list.append((c, response.get('error')))
     else:
       success_list.append(c)
@@ -113,6 +114,7 @@ def remove_user_from_channels(headers, channels, user):
       if response.get('error') == 'not_in_channel':
         already_deleted_list.append(c)
       else:
+        logging.error(f"Error trying to remove user from channel {c['name']}: {response.get('error')}")
         error_list.append((c, response.get('error')))
     else:
       success_list.append(c)
