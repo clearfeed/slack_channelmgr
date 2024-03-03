@@ -2,7 +2,7 @@
 
 In order to access Slack via APIs - we need an auth token. In order to do so - you can create a Slack App that has the required scopes. To do so:
 
-1. _Either_ follow the steps described in the following section on [Creating a Slack App using Manifest](#create-slack-app-using-manifest)
+1. _Either_ follow the steps described in the following section on [Creating a Slack App using Manifest](#create-slack-app-using-manifest). This approach is *strongly recommended*.
 
 <br>
 
@@ -62,7 +62,13 @@ https://docs.celigo.com/hc/en-us/articles/7140655476507-How-to-create-an-app-and
                 "groups:write.invites",
                 "users:read",
                 "channels:write",
-                "groups:write"
+                "groups:write",
+                "bookmarks:write",
+                "bookmarks:read",
+                "pins:read",
+                "pins:write",
+                "canvases:write",
+                "canvases:read"
             ],
             "bot": [
                 "app_mentions:read",
@@ -80,7 +86,13 @@ https://docs.celigo.com/hc/en-us/articles/7140655476507-How-to-create-an-app-and
                 "team:read",
                 "users.profile:read",
                 "users:read",
-                "users:write"
+                "users:write",
+                "bookmarks:write",
+                "bookmarks:read",
+                "pins:read",
+                "pins.write",
+                "canvases:write",
+                "canvases:read"
             ]
         }
     },
