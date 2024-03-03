@@ -28,7 +28,8 @@ from lib_slack import users
 def main():
 
     st.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=32 height=32>](https://clearfeed.ai/)'''.format(img_to_bytes("ClearFeedSquareLogo.png")), unsafe_allow_html=True)
-    st.header('ClearFeed Bulk Channel Manager')
+    st.header('Manage Users across many Slack Channels')
+
     st.markdown("""
                 This is a free app to manage users across multiple Slack channels. 
                 It's relevant for people who manage lots of Slack channels (for example in customer facing situations).
@@ -50,6 +51,7 @@ def main():
 
 
                 **Getting Help**:
+                
                 You can ask questions at `#bulk-channel` on our Community Slack Workspace. Join using the [invite link here](https://join.slack.com/t/clearfeedcommunity/shared_invite/zt-16yp3d38w-tlZK7T8qynBZrDLNzKBtDw)
 
                 ---
