@@ -33,7 +33,7 @@ def main():
     st.markdown("""
                 This is a free app to manage users across multiple Slack channels. 
                 It's relevant for people who manage lots of Slack channels (for example in customer facing situations).
-                It's developed by [*ClearFeed*](https://clearfeed.ai) - we help manage Customer Slack Channels and convert Slack Channels into a HelpDesk. We also help with Slack Connect and Slack Workflow Builder.
+                It's developed by [*ClearFeed*](https://clearfeed.ai) - we help manage Customer Slack Channels and convert Slack Channels into a HelpDesk.
 
                 **Usage Notes**:
                 
@@ -51,7 +51,7 @@ def main():
 
 
                 **Getting Help**:
-                
+
                 You can ask questions at `#bulk-channel` on our Community Slack Workspace. Join using the [invite link here](https://join.slack.com/t/clearfeedcommunity/shared_invite/zt-16yp3d38w-tlZK7T8qynBZrDLNzKBtDw)
 
                 ---
