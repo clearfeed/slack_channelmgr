@@ -61,6 +61,8 @@ https://docs.celigo.com/hc/en-us/articles/7140655476507-How-to-create-an-app-and
                 "groups:read",
                 "groups:write.invites",
                 "users:read",
+                "users:read.email",
+                "users.profile:read",
                 "channels:write",
                 "groups:write",
                 "bookmarks:write",
@@ -68,7 +70,9 @@ https://docs.celigo.com/hc/en-us/articles/7140655476507-How-to-create-an-app-and
                 "pins:read",
                 "pins:write",
                 "canvases:write",
-                "canvases:read"
+                "canvases:read",
+                "channels:write.topic",
+                "channels:history"
             ],
             "bot": [
                 "app_mentions:read",
@@ -86,13 +90,16 @@ https://docs.celigo.com/hc/en-us/articles/7140655476507-How-to-create-an-app-and
                 "team:read",
                 "users.profile:read",
                 "users:read",
+                "users:read.email",
                 "users:write",
                 "bookmarks:write",
                 "bookmarks:read",
                 "pins:read",
                 "pins.write",
                 "canvases:write",
-                "canvases:read"
+                "canvases:read",
+                "channels:write.topic",
+                "channels:history"
             ]
         }
     },
